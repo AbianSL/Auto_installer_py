@@ -89,3 +89,16 @@ unsigned int ped(char string_1[], char string_2[]) {
   return min_row_matrix(size_string_1, size_string_2 - 1, matrix);
 }
 
+static PyObject* Cped(PyObject* self, PyObject* args) {
+  const char* string_1;
+  const char* string_2;
+  
+  if (!PyArg_ParseTuple(args, "ss", &string_1, &string_2)) {
+    return NULL;
+  }
+  
+  unsigned int result = ped(string_1, string_2);
+
+  return Py_BuildValue("i", result);
+}
+
