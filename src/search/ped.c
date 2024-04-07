@@ -90,6 +90,7 @@ unsigned int ped(char string_1[], char string_2[]) {
 }
 
 static PyObject* Cped(PyObject* self, PyObject* args) {
+
   const char* string_1;
   const char* string_2;
   
@@ -101,4 +102,22 @@ static PyObject* Cped(PyObject* self, PyObject* args) {
 
   return Py_BuildValue("i", result);
 }
+
+static PyMethodDef methods[] = {
+  {"ped", Cped, METH_VARARGS, "Calculate the proximity edit distance between two strings"},
+  {NULL, NULL, 0, NULL}
+};
+
+static struct PyModuleDef module = {
+  PyModuleDef_HEAD_INIT,
+  "ped",
+  "Calculate the proximity edit distance between two strings",
+  -1,
+  methods
+};
+
+PyMODINIT_FUNC PyInit_ped(void) {
+  return PyModule_Create(&module);
+}
+
 
