@@ -16,5 +16,7 @@ class memory:
             with open(self._packages_files, "r") as file:
                 self._packages = file.readlines()
         except FileNotFoundError:
+            error.error_mg("The file with the packages information does not exist")
+            self._packages = []
             
             
