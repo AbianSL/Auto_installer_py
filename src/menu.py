@@ -15,7 +15,7 @@ class menu:
         stdscr.clear()
         height, width = stdscr.getmaxyx()
 
-        self.print_menu()
+        self.print_menu(height, width, stdscr)
 
         letter_j = ord("j")
         letter_k = ord("k")
@@ -37,14 +37,14 @@ class menu:
                 stdscr.getch()
                 break
 
-            self.print_menu()
+            self.print_menu(height, width, stdscr)
 
 
         stdscr.refresh()
         # to see the result
         stdscr.getch()
 
-    def print_menu():
+    def print_menu(self, height, width, stdscr) -> None:
         for idx, item in enumerate(self.items):
             x_coordinate = width//2 - len(item)//2
             y_coordinate = height//2 - len(self.items)//2 + idx
